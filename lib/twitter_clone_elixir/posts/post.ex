@@ -7,6 +7,8 @@ defmodule TwitterCloneElixir.Posts.Post do
     field :title, :string
     field :body, :string
     belongs_to :user, User
+
+    timestamps(type: :utc_datetime)
   end
 
   def changeset(post, attrs) do

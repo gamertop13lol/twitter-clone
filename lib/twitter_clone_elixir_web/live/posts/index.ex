@@ -3,8 +3,14 @@ defmodule TwitterCloneElixirWeb.PostLive.Index do
 
   alias TwitterCloneElixir.Posts
 
-  def mount(params, session, socket) do
+  def mount(_params, _session, socket) do
+    form = to_form(%{}, as: "post")
     posts = Posts.list_posts()
-    {:ok, assign(socket, :posts, posts)}
+    {:ok, assign(socket, :posts, posts) |> assign(:form, form)}
+  end
+
+  def handle_event("search", %{"post" => title}, socket) do
+    posts = Posts.search_posts(title)
+    {:noreply, assign(socket, :posts, posts)}
   end
 end

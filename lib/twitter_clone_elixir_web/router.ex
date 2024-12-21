@@ -22,6 +22,7 @@ defmodule TwitterCloneElixirWeb.Router do
 
     get "/", PageController, :home
     live "/posts", PostLive.Index, :index
+    live "/posts/:id", PostLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

@@ -6,6 +6,8 @@ defmodule TwitterCloneElixir.Repo.Migrations.CreatePosts do
       add :title, :string
       add :body, :string
       add :user_id, references(:users, on_delete: :delete_all, type: :bigint)
+
+      timestamps(type: :utc_datetime)
     end
   end
 end
